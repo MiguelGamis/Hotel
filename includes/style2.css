@@ -1,0 +1,263 @@
+/*
+	Author	:	Christopher Robinson
+	Email		:	christopher@edg3.co.uk
+	Website	:	http://www.edg3.co.uk/
+*/
+* {
+	border:0;
+	margin:0;
+	padding:0;
+}
+
+/* general */
+a {
+	color:#777;
+	text-decoration:none;
+}
+
+a:hover {
+	color:#333;
+	text-decoration:none;
+}
+
+/* body */
+body {
+	background:#CBCBCB;
+	color:#555;
+	font:0.8em Arial, Helvetica, "bitstream vera sans", sans-serif;
+}
+
+/* header */
+#header {
+	border-bottom:1px solid #999;
+	height:83px;
+	margin:0 auto;
+	width:801px;
+}
+#header h1 {
+	color:#888;
+	font-size:300%;
+	letter-spacing:-3px;
+	text-align:right;
+	padding:5px;
+	margin-bottom:-20px;
+}
+#header h2 {
+	color:#FFFFFF;
+	font-size:200%;
+	letter-spacing:-2px;
+	text-align:right;
+}
+
+#header h3{
+	color:#FFFFFF;
+	font-size:100%;
+	letter-spacing:-1px;
+	text-align:left;
+}
+
+/* navigation */
+#navigation {
+	background:#fafafa;
+	border-right:1px solid #999;
+	margin:0 auto;
+	width:800px;
+	height:40px;
+	list-style:none;
+}
+#navigation li {
+	border-left:1px solid #999;
+	float:left;
+	width:159px;
+	list-style:none;
+}
+#navigation a {
+	color:#555;
+	display:block;
+	line-height:40px;
+	text-align:center;
+}
+#navigation a:hover {
+	background:#e3e3e3;
+	color:#555;
+}
+#navigation .active {
+	background:#e3e3e3;
+	color:#777;
+}
+
+/* content */
+#content {
+	height:auto;
+	margin:0 auto;
+	padding:0 0 20px;
+	width:801px;
+}
+#content h1 {
+	border-bottom:1px dashed #999;
+	font-size:1.8em;
+	padding:20px 0 0;
+}
+#content p {
+	padding:20px 20px 0;
+}
+
+/* footer */
+#footer {
+	border-top:1px solid #999; 
+	height:50px;
+	margin:0 auto;
+	padding:10px;
+	text-align:center;
+	width:801px;
+}
+
+/* Added by Larry Ullman: */
+.error {
+	font-weight: bold;
+	color: #C00
+}
+
+#calendar_wrap {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden;
+}
+.title_bar {
+	width: 100%;
+	height: 30px;
+}
+.previous_month {
+	float: left;
+	width: 266px;
+	height: 30px;
+	text-align: left;
+}
+.show_month {
+	float: left;
+	width: 266px;
+	height: 30px;
+	text-align: center;
+}
+.next_month{
+	float: left;
+	width: 266px;
+	height: 30px;
+	text-align: right;
+}
+.week_days{
+	width: 100%;
+}
+.days_of_week{
+	float: left;
+	width: 14%;
+	text-align: center;
+}
+.cal_day{
+	position: relative;
+	float: left;
+	margin-right: 4px;
+	margin-bottom: 4px;
+	width: 110px;
+	height: 95px;
+	background-color: #9C9;
+}
+.day_heading {
+	position: relative;
+	float: left;
+	width: 40px;
+	height: 16px;
+	padding: 6px;
+	color: #000;
+	font-family: Arial;
+	font-size: 14px;
+}
+.non_cal_day{
+	position: relative;
+	float: left;
+	margin-right: 4px;
+	margin-bottom: 4px;
+	width: 110px;
+	height: 95px;
+	background-color: #CCC;
+}
+.clear {
+	clear: both;
+}
+
+.cap_day{
+	position: relative;
+	float: left;
+	margin-right: 4px;
+	margin-bottom: 4px;
+	width: 30px;
+	height: 20px;
+}
+
+#rooms-wrap {
+	width: 41px;
+	float: left;
+	margin-left: auto;
+	overflow: hidden;
+}
+
+.room_no{
+	float: bottom;
+	width: 30px;
+	text-align: center;
+}
+
+.room_heading {
+	position: relative;
+	float: left;
+	width: 40px;
+	height: 16px;
+	padding: 0px;
+	color: #000;
+	font-family: Arial;
+	font-size: 14px;
+}
+
+.rooms{
+	position: relative;
+	float: bottom;
+	margin-right: 4px;
+	margin-bottom: 4px;
+	width: 40px;
+	height: 50px;
+	background-color: #9C9;
+}
+
+#days-wrap {
+	width: 760px;
+	margin-left: 1px;
+	overflow: hidden;
+}
+
+.days_no{
+	float: left;
+	width: 12%;
+	text-align: center;
+}
+
+.day_heading {
+	position: relative;
+	float: left;
+	width: 40px;
+	height: 16px;
+	padding: 0px;
+	color: #000;
+	font-family: Arial;
+	font-size: 14px;
+}
+
+.days{
+	position: relative;
+	float: left;
+	margin-right: 4px;
+	margin-bottom: 4px;
+	width: 11%;
+	height: 50px;
+	background-color: #9C9;
+}

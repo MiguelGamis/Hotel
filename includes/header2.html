@@ -1,0 +1,46 @@
+<!- DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xthml-strict.dtd">
+
+<?php
+ini_set('display_error', 1);
+
+if(!$_SESSION["managerid"]){
+ header( 'Location: lobby.php' );
+}
+
+?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+
+	<title><?php echo $page_title; ?></title>
+	
+	<link rel="stylesheet" href="includes/style2.css" media="screen" />
+	
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+
+</head>
+
+<body>
+	
+	<div id="header">
+		<h1>Sterling Cooper Draper Pryce</h1>
+		<h2>Hotels and Resorts</h2>
+		<?php
+		echo "<h3>Welcome, " . $_SESSION['em_fname'] . " ". $_SESSION['em_lname'] . "</h3>";
+		?>
+	</div>
+	
+	<div id="navigation">
+		<ul>
+			<li><a href="hotel_status.php">Home Page</a></li>
+			<li><a href="view_users.php">View Users</a></li>
+			<li><a href="calendar_start.php">Reservation Metric</a></li>
+			<li><a href="statistics.php">Sales</a></li>
+			<li><a href="logout.php">Logout</a></li>
+		</ul>
+	</div>
+	
+	<div id="content"><!-- Start of the page-specfic content. -->
+	
+	<!-- Script 3.2 - header.html -->

@@ -1,0 +1,7 @@
+registration
+datepicker
+dbc close
+executBoundSQL
+refreshing on confirmation (take to other page)
+Updating forms
+Distinguish a query fail and an empty result
