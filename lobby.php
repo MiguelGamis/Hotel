@@ -4,7 +4,7 @@ require_once('session.php');
 
 require_once('connection.php');
 
-$success = true;
+//$success = true;
 
 $verification = 0;
 
