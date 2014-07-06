@@ -261,3 +261,64 @@ body {
 	height: 50px;
 	background-color: #9C9;
 }
+
+/*jsgraph stuff below*/
+
+img{
+	background:		#FFFFFF
+	border:			0px;
+}
+
+ul, ol, li{
+	list-style:		none;
+}
+
+table{
+	border:		0px;
+	border-collapse:	collapse;
+	width: 		100%;
+}
+
+div{
+	width:		100%;
+	position: 	relative;
+	top:		0px;
+	left:		0px;
+}
+
+#div0, #div3{
+	width:			400px;
+	left:			50%;
+	margin-left: 	-200px;
+	text-align:		center;
+	border:			1px solid #CCCCCC;
+	padding:		5px 0px;
+}
+
+#div1{
+	width:			400px;
+	margin-top:		50px;
+	background: 	#eeeeee;
+	border-left:	1px solid #555555;
+	border-bottom:	1px solid #555555;
+	height:			300px;
+	left:			50%;
+	margin-left:	-200px;
+	overflow:		hidden;
+}
+
+#div3{
+	border:0px;margin-top:0px;
+}
+
+.div2{
+	height:			0px;
+	position: 		absolute;
+	width:			0px;
+	margin-left:	0px;
+	top:			0px;
+	background:		#006600;
+	background:		-moz-linear-gradient(center top, #006600, #004400);
+	background:		-webkit-gradient(linear, center top, center top, from(#006600), to(#004400));
+	filter:			progid:DXImageTransform.Microsoft.gradient(startColorstr='#006600', endColorstr='#004400');
+	}

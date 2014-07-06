@@ -44,7 +44,7 @@ $display = 30;
 
 $daysahead = 7;
 $today = date("Y-m-d");
-$reachday = date("Y-m-d",strtotime($today . "+ $daysahead day"));
+$reachday = date("Y-m-d",strtotime($today . "+ " . $daysahead . " day"));
 
 // Determine how many pages there are...
 

@@ -25,6 +25,7 @@ require_once('connection.php');
 
 <p><b>Hotel Branch:</b>
 <select name="hotelbranch" onchange="document.getElementById('hotel-image').src = 'hotel_images/' + this.options[this.selectedIndex].value + '.jpg'">
+
 <?php
 	$q = "select * from hotelbranch";
 	$hotelbranches = @mysqli_query($dbc, $q);
@@ -94,7 +95,8 @@ require('calendar/tc_calendar.php');
 	  $myCalendar->writeScript();
 	  
 ?>
-&nbsp <a href="http://www.triconsole.com/php/calendar_datepicker.php"> Copyright</a></p>
+
+&nbsp <a href="http://www.triconsole.com/php/calendar_datepicker.php"> Copyright </a></p>
 
 </fieldset style="width:500">
 
@@ -210,8 +212,6 @@ if($dbc){
 
 <?php
 
-echo '<div style="float : bottom;">';
-include ('includes/footer.html');
-echo '</div>';
+	include ('includes/footer.html');
 
 ?>

@@ -11,8 +11,8 @@ require_once('session.php');
 		<title>Sales</title>
 		
 		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-		
-		<link rel="stylesheet" type="text/css" href="includes/jsgraph.css" />
+		 	
+		<link rel="stylesheet" type="text/css" href="includes/style2.css" />
 
 	</head>
 	
@@ -36,9 +36,9 @@ require_once('session.php');
 		</ul>
 	</div>
 	
-	<canvas id="canvas1" height="450" width="800"></canvas>
 	
-	<script type="text/javascript" src="Hotel/jsgraph.js"></script>
+	<div id="div1"></div>
+	<script type="text/javascript" src="jsgraph.js"></script>
 	
 	</body>
 </html>
