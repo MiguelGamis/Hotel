@@ -166,3 +166,13 @@ border: 8px solid #666;
 	margin-right: auto;
 	overflow: hidden;
 }
+
+#hotel-image{
+	border: 8px solid #666;
+    border-radius: 30px;
+	-moz-border-radius: 30px;
+	-khtml-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	width: 285px;
+	height: 175px;
+}

@@ -11,43 +11,6 @@ include('includes/header.html');
 
 require_once('connection.php');
 
-function print_Rooms($result) { //printsRooms for Reservations
-	
-	echo '<div id="available-reservations">';
-	if(!$result){
-		echo '<p class="error">There are no available rooms that meets your request. We are very sorry for this inconvience.</p>';
-	} else{
-	global $hotelbranch;
-	
-	echo '<form method="POST"><p><br>Available Rooms:<br></p>';
-	echo '<p><table align="center" cellspacing="0" cellpadding="20" width="75%">';
-	echo '<tr><th>Hotel Branch</th><th>Room Type</th><th>Room No.</th><th>Day Rate</th></tr>';
-	
-	$bg = '#eeeeee';
-	
-	while ($row = mysqli_Fetch_Array($result, MYSQLI_ASSOC)) {
-	
-		$bg = ($bg == '#eeeeee' ? '#ffffff' : '#eeeeee');
-		
-		echo '<tr bgcolor="' . $bg . '">
-		
-		<td align="left">' . $hotelbranch[$row["branch_no"]] . '</td>
-		
-		<td align="center">' . $row['room_type'] . '</td>
-		
-		<td align="center">' . $row["room_id"] . '</td>
-		
-		<td align="left">$' . $row["price_rate"] . '/day</td>
-		
-		<td align="center"><a href="confirm_reservation.php?br=' . $row['branch_no'] . '&rm=' . $row['room_id'] . '&tp=' . $row['room_type'] . '&sd=' . $_POST['sd'] . '&ed=' . $_POST['ed'] . '">Book Room</a></td></tr>' ;
-		
-	}
-	echo '</table></p></form>';
-	}
-	echo '</div>';
-}
-
-
 ?>
 
 <h1>Make A Reservation</h1>
@@ -61,7 +24,7 @@ function print_Rooms($result) { //printsRooms for Reservations
 <fieldset><legend>Please choose which Hotel Branch location:</legend>
 
 <p><b>Hotel Branch:</b>
-<select name="hotelbranch">
+<select name="hotelbranch" onchange="document.getElementById('hotel-image').src = 'hotel_images/' + this.options[this.selectedIndex].value + '.jpg'">
 <?php
 	$q = "select * from hotelbranch";
 	$hotelbranches = @mysqli_query($dbc, $q);
@@ -80,6 +43,7 @@ function print_Rooms($result) { //printsRooms for Reservations
 		}
 	}
 ?>
+
 </select></p>
 
 <p><b>Room Type:</b> <input type="radio" name="roomtype" value="B" checked="checked"/> Both <input type="radio" name="roomtype" value="R" /> Regular <input type="radio" name="roomtype" value="D" /> Deluxe </p>
@@ -128,6 +92,7 @@ require('calendar/tc_calendar.php');
 	  
 	  $myCalendar->setDatePair('sd', 'ed', $todayasstring);
 	  $myCalendar->writeScript();
+	  
 ?>
 &nbsp <a href="http://www.triconsole.com/php/calendar_datepicker.php"> Copyright</a></p>
 
@@ -139,15 +104,7 @@ require('calendar/tc_calendar.php');
 
 <div id="hotel-image-wrap">
 
-<div style=" border: 8px solid #666;
-            border-radius: 30px;
-            -moz-border-radius: 30px;
-            -khtml-border-radius: 30px;
-            -webkit-border-radius: 30px;
-            width: 285px;
-            height: 175px;
-            background: url('hotel_images/pacific_rim.jpg');" />
-</div>
+<img id="hotel-image" src="hotel_images/pacific_rim.jpg">
 
 </div>
 
@@ -161,7 +118,6 @@ if($dbc){
 		if( !($_POST['sd']=='0000-00-00' or $_POST['ed']=='0000-00-00') ){
 			if($_POST['sd'] >= $todayasstring ){
 			
-				global $regularrooms;
 				$requestedbranch = $_POST['hotelbranch'];
 				$requestedstartdate = $_POST['sd'];
 				$requestedenddate = $_POST['ed'];
@@ -190,13 +146,45 @@ if($dbc){
 				$q3 = "
 				select * from rm WHERE 
 				(NOT EXISTS(select * from reservation r where r.branch_no = rm.branch_no and r.room_id = rm.room_id and 
-				((DATE'" . $requestedstartdate . "' BETWEEN r.start_date AND r.end_date) 
-				OR (DATE '" . $requestedenddate . "' BETWEEN r.start_date AND r.end_date))) 
+				((" . $requestedstartdate . " BETWEEN r.start_date AND r.end_date) 
+				OR (" . $requestedenddate . " BETWEEN r.start_date AND r.end_date))) 
 				OR rm.start_date IS NULL) " . $roomfilter . " order by price_rate, room_id";
 				
 				$availablerooms = @mysqli_query($dbc, $q3);
 				
-				print_Rooms($availablerooms);
+				echo '<div id="available-reservations">';
+				
+				if(!$availablerooms){
+					echo '<p class="error">There are no available rooms that meets your request. We are very sorry for this inconvience.</p>';
+				} else{
+				$hotelbranch;
+				
+				echo '<form method="POST"><p><br>Available Rooms:<br></p>';
+				echo '<p><table align="center" cellspacing="0" cellpadding="20" width="75%">';
+				echo '<tr><th>Hotel Branch</th><th>Room Type</th><th>Room No.</th><th>Day Rate</th></tr>';
+				
+				$bg = '#eeeeee';
+				
+				while ($row = mysqli_Fetch_Array($availablerooms, MYSQLI_ASSOC)) {
+				
+					$bg = ($bg == '#eeeeee' ? '#ffffff' : '#eeeeee');
+					
+					echo '<tr bgcolor="' . $bg . '">
+					
+					<td align="left">' . $hotelbranch[$row["branch_no"]] . '</td>
+					
+					<td align="center">' . $row['room_type'] . '</td>
+					
+					<td align="center">' . $row["room_id"] . '</td>
+					
+					<td align="left">$' . $row["price_rate"] . '/day</td>
+					
+					<td align="center"><a href="confirm_reservation.php?br=' . $row['branch_no'] . '&rm=' . $row['room_id'] . '&tp=' . $row['room_type'] . '&sd=' . $_POST['sd'] . '&ed=' . $_POST['ed'] . '">Book Room</a></td></tr>' ;
+					
+				}
+				echo '</table></p></form>';
+				}
+				echo '</div>';
 				
 				mysqli_free_result($availablerooms);
 				
@@ -205,6 +193,8 @@ if($dbc){
 				@mysqli_query($dbc, $q4);
 				
 				mysqli_close($dbc);
+				
+
 			}
 			else{  
 				echo '<p class="error">Error: Requested start date has already passed<br />';
@@ -212,9 +202,6 @@ if($dbc){
 		} else {
 			echo '<p class="error">Error: Please enter both start date and end date<br />';
 		}
-		/*if($_POST){
-			 header( 'Location: reservation.php' );
-		}*/
 	}
 } else {
 	echo '<p class="error">Cannot connect to database</p>';
@@ -222,7 +209,9 @@ if($dbc){
 ?>
 
 <?php
+
 echo '<div style="float : bottom;">';
 include ('includes/footer.html');
 echo '</div>';
+
 ?>
